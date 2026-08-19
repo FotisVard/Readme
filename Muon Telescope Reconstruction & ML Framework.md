@@ -87,8 +87,7 @@ in two passes** to first calibrate the spatial resolution empirically, then prod
 
 graph TD
     subgraph Hardware
-        DAQ["Raw DAQ Data"] --> SC["Scintillator Coincidence Trigger"]
-        DAQ --> MM["Micromegas Hits"]
+        DAQ["Raw DAQ Data"] --> SC["Scintillator Coincidence Trigger"] --> MM["Micromegas Hits"]
     end
 
     subgraph Pipeline_1["Pipeline 1: Standard Physics Analysis"]
