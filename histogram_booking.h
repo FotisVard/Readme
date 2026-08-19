@@ -1,3 +1,5 @@
+//This file shows the graphs that I created whilst trying to solve the detectors problems
+
 // Best 3-layer angleX, angleY, and angleXY histograms
 TH1F *h_best3LayerAngleX = new TH1F("h_best3LayerAngleX", "Best 3-layer angleX;angleX (deg);events", 180, 40, 140);
 TH1F *h_best3LayerAngleY = new TH1F("h_best3LayerAngleY", "Best 3-layer angleY;angleY (deg);events", 180, 40, 140);
