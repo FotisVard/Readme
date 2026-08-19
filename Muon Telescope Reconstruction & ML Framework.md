@@ -106,6 +106,7 @@ graph TD
         F --> I[plot.h<br>Residual Calibration Plots]
         G --> I
     end
+```
 
 My Algorithmic Contributions
 The principal challenge of this telescope is high noise occupancy and multi‑hit ambiguities inherent to the Micromegas gaseous detectors. 
