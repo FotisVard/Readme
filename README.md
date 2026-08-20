@@ -94,8 +94,12 @@ in two passes** to first calibrate the spatial resolution empirically, then prod
 ```mermaid
 
 graph TD
-    subgraph Hardware
-       Muon ["Muon passes through the detector"]--> Scintillator ["Charge Detected on Both Scintillators"] --> MM["Micromegas Collects Data"] --> ADC ["Analog to Digital Cards"] --> FEC ["Front-End Cards"] --> DAQ["Raw DAQ Data"]
+    subgraph Hardware["Hardware Layer"]
+        Muon["Muon passes through the detector"] --> Scintillator["Charge Detected on Both Scintillators"]
+        Scintillator --> MM["Micromegas Collects Data"]
+        MM --> ADC["Analog to Digital Cards"]
+        ADC --> FEC["Front-End Cards"]
+        FEC --> DAQ["Raw DAQ Data"]
     end
 
     subgraph Pipeline_1["Pipeline 1: Standard Physics Analysis"]
