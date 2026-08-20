@@ -14,7 +14,7 @@ a strong emphasis on algorithmic noise rejection, calibration, and feature engin
 ## 🔬 Telescope Hardware Configuration
 
 The setup consists of **8 Micromegas detectors** arranged in a **4‑layer stereo configuration** (2 detectors per layer: `X` and `Y` 
-coordinates), providing precise 2D spatial hit information. The detectors dimensions active region is $460 \times 460$mm but we work only with active region $384 \times 384$mm.
+coordinates), providing precise 2D spatial hit information. The detectors dimensions active region is $460 \times 460$mm but we work only with active region $384 \times 384$mm. $a \times b$
 
 | Layer | Height (Z) | Detector Pair |
 |-------|------------|---------------|
