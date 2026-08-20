@@ -113,33 +113,6 @@ graph TD
         F --> I["plot.h<br>Residual Calibration Plots"]
         G --> I
     end
-graph TD
-    subgraph Hardware["Hardware Layer"]
-        Muon["Muon goes through the detector"] --> SC["Charge Detected on Both Scintillators"]
-        SC --> MM["Micromegas Collects Data"]
-        MM --> ADC["Analog to Digital Converter"]
-    end
-
-    subgraph Pipeline_1["Pipeline 1: Standard Physics Analysis"]
-        ADC --> A["mmanalys.h<br>Noise Filtering & Decoding"]
-        A --> B["histogram_booking.h<br>ROOT Pointer Booking"]
-        B --> C["trackseeding.cpp<br>Combinatorial Track Seeding"]
-        C --> D["plot.h<br>Physics Histograms"]
-    end
-
-    subgraph Pipeline_2["Pipeline 2: Machine Learning Preparation"]
-        ADC --> E["mmanalys.h (modified)<br>Data Decoding"]
-        E --> F["micromegas.cpp<br>Pass 1: Empirical Sigma Extraction"]
-        F --> G["micromegas.cpp<br>Pass 2: Feature Aggregation & CSV Export"]
-        G --> H["ml_real_data.csv<br>ML Training Dataset"]
-        G --> I["plot.h<br>Residual Calibration Plots"]
-    end
-
-    %% Styling (optional, makes it look professional)
-    style Hardware fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    style Pipeline_1 fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    style Pipeline_2 fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-
 ```
 
 My Algorithmic Contributions
