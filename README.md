@@ -95,7 +95,7 @@ in two passes** to first calibrate the spatial resolution empirically, then prod
 
 graph TD
     subgraph Hardware
-       Muon passes --> Charge Detected on Both Scintillators -->  MM["Micromegas"] Collects Data -->ADC [Analog to Digital Cards] --> FEC [Front-End Cards] --> DAQ["Raw DAQ Data"]
+       Muon passes --> Charge Detected on Both Scintillators --> MM["Micromegas"] Collects Data --> ADC [Analog to Digital Cards] --> FEC [Front-End Cards] --> DAQ["Raw DAQ Data"]
     end
 
     subgraph Pipeline_1["Pipeline 1: Standard Physics Analysis"]
