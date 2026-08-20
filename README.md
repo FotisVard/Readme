@@ -103,14 +103,14 @@ graph TD
     end
 
     subgraph Pipeline_1["Pipeline 1: Standard Physics Analysis"]
-        MM --> A["mmanalys.h<br>Noise Filtering & Decoding"]
+        DAQ --> A["mmanalys.h<br>Noise Filtering & Decoding"]
         A --> B["histogram_booking.h<br>ROOT Pointer Booking"]
         B --> C["trackseeding.cpp<br>Combinatorial Track Seeding"]
         C --> D["plot.h<br>Physics Histograms"]
     end
 
     subgraph Pipeline_2["Pipeline 2: Machine Learning Preparation"]
-        MM --> E["mmanalys.h (modified)<br>Data Decoding"]
+        DAQ --> E["mmanalys.h (modified)<br>Data Decoding"]
         E --> F["micromegas.cpp<br>Pass 1: Empirical Sigma Extraction"]
         F --> G["micromegas.cpp<br>Pass 2: Feature Aggregation & CSV Export"]
         G --> H["ml_real_data.csv<br>ML Training Dataset"]
