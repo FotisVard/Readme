@@ -14,7 +14,7 @@ a strong emphasis on algorithmic noise rejection, calibration, and feature engin
 ## 🔬 Telescope Hardware Configuration
 
 The setup consists of **8 Micromegas detectors** arranged in a **4‑layer stereo configuration** (2 detectors per layer: `X` and `Y` 
-coordinates), providing precise 2D spatial hit information.
+coordinates), providing precise 2D spatial hit information. The detectors dimensions active region is $460 \times 460$mm but we work only with active region $384 \times 384$mm.
 
 | Layer | Height (Z) | Detector Pair |
 |-------|------------|---------------|
@@ -23,7 +23,6 @@ coordinates), providing precise 2D spatial hit information.
 | **3**           | `750 mm`   | `X3` & `Y3` |
 | **4** (Top)    | `1000 mm`  | `X4` & `Y4` |
 
-*(Normalized height `MM4y2 = 0.89` corresponds to the physical `1000 mm` height.)*
 
 **Trigger System**  
 Data acquisition is gated by two plastic scintillator paddles:
@@ -80,6 +79,15 @@ in two passes** to first calibrate the spatial resolution empirically, then prod
 4. **`plot.h`** – **Diagnostic Visualization**  
    Used to validate the feature distributions (and the residual calibration) before feeding them into the ML training loop.
 
+5. **'MMHit.h'** stores raw strip number, charge, and drift time (y from FD_time).
+
+6. **'MMPacmanAlgo.h'** implements a simple forward‑only clustering where the maximum gap between adjacent hits is controlled by m_clus_size (default 1, meaning  no gaps allowed). The code includes a m_hole_size parameter but it's not used (commented out). The algorithm groups hits that are within m_clus_size channels.
+
+7. **'MMCluster.h'** provides methods like Pos(pitch) (centroid), Charge(), Channel() (centroid in strip units), and size().
+
+8. **'MMTrackingChain.h'** is a separate class that implements a different track reconstruction approach (based on "chains") – it's not used in the main pipelines but is included as an alternative. I've shown it with dashed lines.
+
+9. **'plot.h'** is used in both pipelines to draw histograms; in the ML pipeline, it also draws calibration plots (e.g., residual vs cluster size).
 ---
 
 ### 🔄 Data Flow Diagram
@@ -87,7 +95,7 @@ in two passes** to first calibrate the spatial resolution empirically, then prod
 
 graph TD
     subgraph Hardware
-        DAQ["Raw DAQ Data"] --> SC["Scintillator Coincidence Trigger"] --> MM["Micromegas Hits"]
+       Muon passes --> Charge Detected on Both Scintillators -->  MM["Micromegas"] Collects Data -->ADC [Analog to Digital Cards] --> FEC [Front-End Cards] --> DAQ["Raw DAQ Data"]
     end
 
     subgraph Pipeline_1["Pipeline 1: Standard Physics Analysis"]
