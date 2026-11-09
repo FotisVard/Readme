@@ -1,9 +1,3 @@
-//////////////////////////////////////////////////////////
-// This class has been automatically generated on
-// Fri Dec 16 19:23:21 2016 by ROOT version 5.34/35
-// from TTree apv_raw/apv_raw
-// found on file: run268.root_FDCTplus.root
-//////////////////////////////////////////////////////////
 
 #ifndef mmanalys_h
 #define mmanalys_h
